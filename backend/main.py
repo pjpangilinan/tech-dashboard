@@ -4,10 +4,12 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from enum import Enum
 from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 from datetime import datetime
 import json
 import asyncio
+import os
 
 from db.database import get_db, init_db
 from models.schemas import Article, UserPreferences, TrendingRepo, JobListing, NewsSource
@@ -314,8 +316,17 @@ async def summarize_article(
             "error": "Summary generation failed. Check console for details."
         }
     
-    return {"summary": summary}
+return {"summary": summary}
 
+# Serve frontend static files in production
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="static")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# Serve frontend static files in production
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="static")
