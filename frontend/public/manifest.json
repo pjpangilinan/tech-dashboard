@@ -1,0 +1,39 @@
+{
+  "name": "Tech Intelligence Dashboard",
+  "short_name": "TechNews",
+  "description": "AI-Powered Tech News Aggregation with Real-time Updates",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["news", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Refresh News",
+      "short_name": "Refresh",
+      "description": "Refresh the news feed",
+      "url": "/?action=refresh"
+    },
+    {
+      "name": "News Sources",
+      "short_name": "Sources",
+      "description": "Manage news sources",
+      "url": "/?action=sources"
+    }
+  ]
+}
